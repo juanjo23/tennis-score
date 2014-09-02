@@ -15,11 +15,16 @@ class Game:
   >>> game2.scores(2).scoreboard()
   [deuce]
   >>> game2.scores(1).scores(2).scores(2).scoreboard()
-  [--, advantaje]
+  [--, adv]
   >>> game2.scores(1).scoreboard()
   [deuce]
   >>> game2.scores(2).scores(2).scoreboard()
   [Federer wins]
+
+  Partido:
+  >>> game = Game('Graf', 'Evert')
+  >>> game.scores(1).scores(1).scores(2).scores(2).scores(1).scores(2).scores(1).scores(2).scores(2).scores(2).scoreboard()
+  [Evert wins]
   """
   def __init__(self, name1, name2):
     self.name1 = name1
@@ -38,16 +43,15 @@ class Game:
     if self.a >= 40 and self.b >= 40 and self.a == self.b:
       print("[deuce]")
     elif self.a > 40 and self.a - self.b == 1:
-      print("[advantaje, --]")
+      print("[adv, --]")
     elif self.b > 40 and self.b - self.a == 1:
-      print("[--, advantaje]") 
+      print("[--, adv]") 
     elif self.a > 40 and self.a - self.b > 1:
       print("[%s wins]" % self.name1)
     elif self.b > 40 and self.b - self.a > 1:
       print("[%s wins]" % self.name2)
     else:
       print("[%d, %d]" % (self.a, self.b))
-
 
 if __name__ == "__main__":
     import doctest
